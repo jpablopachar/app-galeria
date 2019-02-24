@@ -31,7 +31,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 // Coloca una sola imagen en la ruta establecida
 const storage = multer.diskStorage({
-  destination: path.join(__dirname, 'public/uploads'),
+  destination: path.join(__dirname, '../public/uploads'),
   filename: (req, file, cb) => {
     cb(null, new Date().getTime() + path.extname(file.originalname));
   },
@@ -40,6 +40,6 @@ const storage = multer.diskStorage({
 app.use(multer({ storage }).single('imagen'));
 
 /*                    Rutas                     */
-// app.use(require('../routes/imagen'));
+app.use(require('../routes/imagen'));
 
 module.exports = app;

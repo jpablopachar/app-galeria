@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-body">
+        <form action="/imagenes/agregar" method="POST" enctype="multipart/form-data">
+          <div class="form-group">
+            <input type="text" name="titulo" class="form-control" placeholder="Título" autofocus>
+          </div>
+          <div class="form-group">
+            <textarea name="descripcion" class="form-control" placeholder="Descripción"></textarea>
+          </div>
+          <div class="input-group mb-3">
+            <div class="custom-file">
+              <input type="file" name="imagen" class="custom-file-input" id="inputGroupFile01"
+                aria-describedby="inputGroupFileAddon01">
+              <label class="custom-file-label" for="inputGroupFile01">Escoje un archivo</label>
+            </div>
+          </div>
+          <button class="btn btn-primary">Subir imágen</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Título</th>
+          <th>Descripción</th>
+          <th>Operaciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each imagenes}}
+        <tr>
+          <td>{{titulo}}</td>
+          <td>{{descripcion}}</td>
+          <td>
+            <a href="{{imagenPath}}" target="_blank" class="btn btn-primary">Ver</a>
+            <a href="/imagenes/eliminar/{{_id}}" class="btn btn-danger">Eliminar</a>
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>
